@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Title</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    body {
+    font-family: "Open Sans", sans-serif;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwVPccyT7hmy_SMSIkyF32pIQa-PgkSFqYLRqreP1KMw&usqp=CAU&ec=48665698');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  /*--------------------------------------------------------------
+  # Sections General
+  --------------------------------------------------------------*/
+  section {
+    margin-top: 8vh;
+    /* padding: 60px 0; */
+    overflow: hidden;
+    height: auto;
+    box-shadow: 0px 0 5px rgba(42, 44, 57, 0.25);
+    background-color: aliceblue;
+  }
+  
+  .portfolio-details {
+    margin-top: 25px;
+  }
+
+  .portfolio-details .portfolio-info {
+    padding: 10px 30px;
+    /* height: 82vh; */
+  }
+
+  .portfolio-details .portfolio-info h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(188, 178, 178);
+    text-align: center;
+  }
+
+  </style>
+
+</head>
+
+<body>
+  {% block content %}
+ 
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">STUDENT ATTENDANCE SYSTEM</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/"> HOME</a></li>
+        <li><a href="/library"> LIBRARY</a></li>
+        <li><a href="/student_details">Student Details</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section id="portfolio" class="portfolio-details">
+      <div class="row">
+        
+        <div class="col-lg-3">
+          <div class="portfolio-info">
+            <h3>GET DETAILS</h3>
+            <form action="/getDetails" method="POST" class="form-inline" >
+                <select name="sem" id="book" class="form-control" style="width: 80%;">
+                    <option value="4th_sem">4th Semester</option>
+                    <option value="5th_sem">5th semester</option>
+                    <option value="6th_sem">6th semester</option>
+                </select>
+             <br><br>
+            <button type="submit" class="btn btn-success">SUBMIT</button>
+            </form>
+
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="portfolio-info" style="overflow: scroll;">
+            <h3>UPDATES</h3>
+            {% if row %}
+            <center><h3>IA marks</h3></center>
+            <hr>
+              <table class="table">
+                <tr>
+                  {% for head in header %}
+                    <th>
+                      {{head}}
+                    </th>
+                  {% endfor %}
+                </tr>
+                <tr>
+                  {% for col in row %}
+                  <td>{{col}}</td>
+                  {% endfor %}
+                </tr>
+              </table>
+            {% endif %}
+            <br><br>
+            {% if fileName %}
+            <center><h3> Marks sheet</h3></center>
+            <hr>
+            <embed src="http://127.0.0.1:5000/static/marks/{{fileName}}" style="width: 100%;height: 500px;">
+            {% endif %}
+            <br><br>
+            {% if fees %}
+            <center><h3>Fees details</h3></center>
+            <hr>
+              <table class="table">
+                <tr>
+                  {% for head in header1 %}
+                    <th>
+                      {{head}}
+                    </th>
+                  {% endfor %}
+                </tr>
+                <tr>
+                  {% for col in fees %}
+                  <td>{{col}}</td>
+                  {% endfor %}
+                </tr>
+              </table>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock content %}
+</body>
+</html>

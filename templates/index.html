@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Title</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    body {
+    font-family: "Open Sans", sans-serif;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwVPccyT7hmy_SMSIkyF32pIQa-PgkSFqYLRqreP1KMw&usqp=CAU&ec=48665698');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  /*--------------------------------------------------------------
+  # Sections General
+  --------------------------------------------------------------*/
+  section {
+    /* padding: 60px 0; */
+    overflow: hidden;
+    /* height: 90vh; */
+    box-shadow: 0px 0 5px rgba(42, 44, 57, 0.25);
+    background-color: aliceblue;
+  }
+  
+
+
+  .portfolio-details .portfolio-info {
+    padding: 10px 30px;
+    /* height: 82vh; */
+  }
+
+  .portfolio-details .portfolio-info h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(188, 178, 178);
+    text-align: center;
+  }
+
+  </style>
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">STUDENT ATTENDANCE SYSTEM</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/"> HOME</a></li>
+        <li><a href="/library"> LIBRARY</a></li>
+        <li><a href="/student_details">Student Details</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    
+    <section id="portfolio" class="portfolio-details">
+      <div class="row">
+          <div class="col-lg-6">
+            <div class="portfolio-info">
+              <h3>Add Student Details</h3>
+              <form action="/create_datsets" method="POST" >
+                <div class="form-group">
+                  <!-- <label for="Id"></label> -->
+                  <input type="text" class="form-control" id="Id" value="{{id}}" name="Id" readonly required>
+                </div>
+                <div class="form-group">
+                  <!-- <label for="Name">:</label> -->
+                  <input type="text" placeholder="Student USN no" class="form-control" id="usn" name="usn" required>
+                </div>
+
+                <div class="form-group">
+                  <!-- <label for="Name">:</label> -->
+                  <input type="text" placeholder="Student Name" class="form-control" id="Name" name="Name" required>
+                </div>
+                <div class="form-group">
+                  <!-- <label for="Phone">:</label> -->
+                  <input type="tel" placeholder="Phone No." class="form-control" id="Phone" name="Phone" required>
+                </div>
+                <div class="form-group">
+                  <!-- <label for="Email">:</label> -->
+                  <input type="email" placeholder="Email Id" class="form-control" id="Email" name="Email" required>
+                </div>
+                <div class="form-group">
+                  <!-- <label for="pwd">Semester:</label> -->
+                    <select name="Sem" id="Sem" class="form-control" required>
+                        <option value="1st">1st semester</option>
+                        <option value="2nd">2nd semester</option>
+                        <option value="3rd">3rd semester</option>
+                        <option value="4th">4th semester</option>
+                        <option value="5th">5th semester</option>
+                        <option value="6th">6th semester</option>
+                        <option value="7th">7th semester</option>
+                        <option value="8th">8th semester</option>
+                       
+                    </select>
+                </div>
+                <div class="form-group">
+                  <!-- <label for="pwd">Branch:</label> -->
+                    <select name="Cource" id="Cource" class="form-control" required>
+                        <option value="MBA">MBA</option>
+                        <option value="be">B.E</option>
+                        <option value="mt">M.Tech</option>
+                        <option value="dip">Diploma</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                  <!-- <label for="pwd">Branch:</label> -->
+                    <select name="Branch" id="Branch" class="form-control" required>
+                        <option value="AE">Aeronautical Engineering</option>
+                        <option value="CS">Computer Science & Engineering</option>
+                        <option value="CE">Civil Engineering</option>
+                        <option value="ME">Mechanical Engineering</option>
+                        <option value="EC">Electronics & Communication</option>
+                        <option value="EE">Electrical & Electronics Engineering</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <!-- <label for="Id"></label> -->
+                  <input type="text" class="form-control" id="cardnum" name="cardnum" placeholder="Card number" required>
+                </div>
+                <button type="submit" class="btn btn-success form-control">Submit</button>
+              </form>
+  
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+              <div class="row">
+                  <div class="col-lg-12">
+                    <div class="portfolio-info">
+                      <h3>Take Attendence</h3>
+                      <form action="/attendence" method="POST" class="form-inline" >
+                        <!-- <label for="pwd">Semester:</label> -->
+                          <select name="Subject" id="Subject" class="form-control" style="width: 80%;">
+                              
+                              <option value="IP">Image Processing</option>
+                              <option value="Web programming">Web programming</option>
+                              <option value="Data Structures">Data Structures</option>
+                              <option value="Mathematics-4">Mathematics-4</option>
+                              <option value="Python">Python</option>
+                              <option value="IOT">IOT</option>
+                              <option value="IOT LAB">IOT LAB</option>
+                              <option value="Artificial Intelligence">Artificial Intelligence</option>
+                              <option value="Python LAB">Python LAB</option>
+                          </select>
+                        &nbsp;&nbsp;
+                      <button type="submit" class="btn btn-success">Submit</button>
+                      </form>
+                      </div>
+                  </div>
+                </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                    <div class="portfolio-info">
+                      <h3>Updates</h3>
+                      {% if msg %}
+                      {% for mg in msg %}
+                      <h4>{{mg}}</h4>
+                      {% endfor %}
+                      {% endif %}
+        
+                      {% if Date %}
+                        <table class="table">
+                            <tr>
+                              <th>Subject</th><td>{{Subject}}</td><th>Date</th><td>{{Date}}</td><th>Time</th><td>{{Time}}</td>
+                            </tr>
+                        </table>
+                      <table class="table">
+                            <tr>
+                                <th>Present List</th>
+                                <th>Absennse List</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {% for row in present_list %}
+                                    <p>{{row}}</p>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for row in absense_list %}
+                                    <p>{{row}}</p>
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                      </table>
+                      {% endif %}
+        
+                    </div>
+                  </div>
+                </div>
+              </div>
+             </div>
+    </section>
+  </div>
+</body>
+</html>
